@@ -275,7 +275,6 @@ public class ProducerBuilderImpl<T> implements ProducerBuilder<T> {
 
     @Override
     public ProducerBuilder<T> properties(@NonNull Map<String, String> properties) {
-        checkArgument(!properties.isEmpty(), "properties cannot be empty");
         properties.entrySet().forEach(entry ->
             checkArgument(StringUtils.isNotBlank(entry.getKey()) && StringUtils.isNotBlank(entry.getValue()),
                     "properties' key/value cannot be blank"));
@@ -323,6 +322,19 @@ public class ProducerBuilderImpl<T> implements ProducerBuilder<T> {
     @Override
     public ProducerBuilder<T> enableLazyStartPartitionedProducers(boolean lazyStartPartitionedProducers) {
         conf.setLazyStartPartitionedProducers(lazyStartPartitionedProducers);
+        return this;
+    }
+
+    /**
+     * Use this config to automatically create an initial subscription when creating the topic.
+     * If this field is not set, the initial subscription will not be created.
+     * This method is limited to internal use
+     *
+     * @param initialSubscriptionName Name of the initial subscription of the topic.
+     * @return the producer builder implementation instance
+     */
+    public ProducerBuilderImpl<T> initialSubscriptionName(String initialSubscriptionName) {
+        conf.setInitialSubscriptionName(initialSubscriptionName);
         return this;
     }
 

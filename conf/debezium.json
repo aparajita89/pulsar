@@ -1,0 +1,16 @@
+{
+  "database.hostname": "127.0.0.1",
+  "database.port": "3306",
+  "database.user": "root",
+  "database.password": "",
+  "database.server.id": "184054",
+  "database.server.name": "dbserver1",
+  "database.whitelist": "dbzdb",
+  "database.history.pulsar.topic": "persistent://public/default/mysql-history-topic",
+  "offset.storage.topic": "persistent://public/default/mysql-offset-topic",
+  "database.history": "org.apache.pulsar.io.debezium.PulsarDatabaseHistory",
+  "database.dbname": "dbzdb",
+  "database.history.pulsar.service.url": "pulsar://127.0.0.1:6650",
+  "pulsar.service.url": "pulsar://127.0.0.1:6650",
+  "pulsar.topic": "persistent://public/default/dbzdb-topic"
+}
